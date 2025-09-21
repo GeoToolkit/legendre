@@ -36,7 +36,7 @@ public class PolynomialsCalculatorTest {
     PolynomialsCalculator pCalc = new PolynomialsCalculator();
 
     double[] fnalf = pCalc.initiatePnm(2, u);
-    double fnp22 = pCalc.diagonalRecursion(fnalf[2],2, u);
+    double fnp22 = pCalc.diagonalSingleRecursion(fnalf[2],2, u, new double[10]);
 
     Assertions.assertEquals(expected_fnp22, fnp22, delta*100);
 
@@ -44,7 +44,7 @@ public class PolynomialsCalculatorTest {
 
   @Test
   void columnRecursion_testFNAFL20() {
-    double phi = 0.5474567;
+    double phi = 0.654;
     double u = Math.cos(phi);
     double t = Math.sin(phi);
     double p10 = t;
@@ -54,9 +54,9 @@ public class PolynomialsCalculatorTest {
     PolynomialsCalculator pCalc = new PolynomialsCalculator();
 
     double[] fnPnm = pCalc.initiatePnm(2, u);
-    double fnP10 = pCalc.columnRecursion(fnPnm[0],0, 1, 0, t);
+    double fnP10 = pCalc.columnSingleRecursion(fnPnm[0],0, 1, 0, t, new double[10]);
     Assertions.assertEquals(expectedfnP10, fnP10, delta);
-    double fnP20 = pCalc.columnRecursion(fnP10, fnPnm[0], 2, 0, t);
+    double fnP20 = pCalc.columnSingleRecursion(fnP10, fnPnm[0], 2, 0, t, new double[10]);
     Assertions.assertEquals(expectedfnP20, fnP20, delta);
 
 
