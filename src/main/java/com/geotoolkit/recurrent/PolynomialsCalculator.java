@@ -5,7 +5,7 @@ public class PolynomialsCalculator {
   /**
    * Initiates array of appropriate length with two first elements.
    * @param degreeOrder maximum degree/order of desired associated Legendre functions
-   * @param radiansPhi latitude in radians.
+   * @param u cos of latitude.
    * @return initial linear array with two first elements.
    */
   double[] initiatePnm(int degreeOrder, double u) {
