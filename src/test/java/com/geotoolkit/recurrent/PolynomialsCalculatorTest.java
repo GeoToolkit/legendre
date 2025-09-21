@@ -10,6 +10,19 @@ public class PolynomialsCalculatorTest {
     int n = 3;
     int m = 2;
     PolynomialsCalculator pCalc = new PolynomialsCalculator();
-    Assertions.assertEquals(12, pCalc.f(n, m));
+    Assertions.assertEquals(8, pCalc.f(n, m));
+  }
+
+
+  @Test
+  void initiatePnm_whenOrderEqualsTo4_thenArrayOfLength15IsReturned() {
+    int order = 4;
+    double phi = 0.345_235_436_547_456_9;
+    PolynomialsCalculator pCalc = new PolynomialsCalculator();
+    double[] pnm = pCalc.initiatePnm(order, phi);
+    Assertions.assertEquals(15, pnm.length);
+    Assertions.assertEquals(1.0, pnm[0],0.000_000_000_000_000_1);
+    Assertions.assertEquals(Math.sqrt(3) * Math.cos(phi), pnm[1],0.000_000_000_000_000_1);
+
   }
 }
