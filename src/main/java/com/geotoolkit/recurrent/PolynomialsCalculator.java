@@ -24,8 +24,8 @@ public class PolynomialsCalculator {
   }
 
   double columnRecursion(double pn_1m, double pn_2m, int n, int m, double t) {
-    double anm = Math.sqrt(((double)(2 * n - 1)*(2 * n +1)) / ((n -m) * (n + m)));
-    double bnm = Math.sqrt(((double)(2 * n + 1) * (n + m - 1) * (n - m -1)) / ((n - m) * (n + m) * (2 * n - 3)));
+    double anm = Math.sqrt(((double)(2 * n - 1) * (2 * n + 1)) / ((n - m) * (n + m)));
+    double bnm = Math.sqrt(((double)(2 * n + 1) * (n + m - 1) * (n - m - 1)) / ((n - m) * (n + m) * (2 * n - 3)));
   return anm * t * pn_1m - bnm * pn_2m;
   }
 

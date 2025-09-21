@@ -28,7 +28,7 @@ public class PolynomialsCalculatorTest {
   }
 
   @Test
-  void diagonalRecursion_testAFL22() {
+  void diagonalRecursion_testFNAFL22() {
     double phi = 0.5474567;
     double u = Math.cos(phi);
     double p22 = 3 * u * u;
@@ -42,6 +42,26 @@ public class PolynomialsCalculatorTest {
 
   }
 
+  @Test
+  void columnRecursion_testFNAFL20() {
+    double phi = 0.5474567;
+    double u = Math.cos(phi);
+    double t = Math.sin(phi);
+    double p10 = t;
+    double expectedfnP10 = p10 * fnfactor(1, 0);
+    double p20 = 1.5 * t * t - 0.5;
+    double expectedfnP20 = p20 * fnfactor(2, 0);
+    PolynomialsCalculator pCalc = new PolynomialsCalculator();
+
+    double[] fnPnm = pCalc.initiatePnm(2, u);
+    double fnP10 = pCalc.columnRecursion(fnPnm[0],0, 1, 0, t);
+    Assertions.assertEquals(expectedfnP10, fnP10, delta);
+    double fnP20 = pCalc.columnRecursion(fnP10, fnPnm[0], 2, 0, t);
+    Assertions.assertEquals(expectedfnP20, fnP20, delta);
+
+
+  }
+
   private long factorial(int n) {
     if (n == 0) {
       return 1;
@@ -51,7 +71,6 @@ public class PolynomialsCalculatorTest {
     }
     return n * factorial(n - 1);
   }
-
   private double fnfactor(int n, int m) {
     double factorialFraction = (double) factorial(n - m) / factorial(n + m);
     int k = m == 0 ? 1 : 2;
