@@ -7,12 +7,13 @@ import java.util.concurrent.Executors;
 
 public class PolynomialsCalculator {
 
-  public double[] calculateFNALF(int degree, double phi, CountDownLatch latch) {
+  public double[] calculateFNALF(int degree, double phi) {
     double u = Math.cos(phi);
     double t = Math.sin(phi);
 
     double[] pnm = initiatePnm(degree, u);
 
+    CountDownLatch latch = new CountDownLatch(degree + 1);
     ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
     executorService.submit(new ColumnWorker(pnm,degree, 0, t, latch));
     for (int i = 2; i <= degree; i++) {
@@ -22,8 +23,12 @@ public class PolynomialsCalculator {
       executorService.submit(columnWorker);
     }
     latch.countDown();
+    try {
+      latch.await();
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
     return pnm;
-
   }
 
   /**
@@ -74,7 +79,7 @@ public class PolynomialsCalculator {
    *
    * @return index of analogous linear array element.
    */
-  int f(int n, int m) {
+  public int f(int n, int m) {
     return (n * n + n) / 2 + m;
   }
 
