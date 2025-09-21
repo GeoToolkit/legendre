@@ -18,11 +18,11 @@ public class PolynomialsCalculatorTest {
   void initiatePnm_whenOrderEqualsTo4_thenArrayOfLength15IsReturned() {
     int order = 4;
     double phi = 0.345_235_436_547_456_9;
+    double u = Math.cos(phi);
     PolynomialsCalculator pCalc = new PolynomialsCalculator();
-    double[] pnm = pCalc.initiatePnm(order, phi);
+    double[] pnm = pCalc.initiatePnm(order, u);
     Assertions.assertEquals(15, pnm.length);
     Assertions.assertEquals(1.0, pnm[0],0.000_000_000_000_000_1);
-    Assertions.assertEquals(Math.sqrt(3) * Math.cos(phi), pnm[1],0.000_000_000_000_000_1);
-
+    Assertions.assertEquals(Math.sqrt(3) * u, pnm[1],0.000_000_000_000_000_1);
   }
 }

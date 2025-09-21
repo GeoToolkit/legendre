@@ -8,17 +8,17 @@ public class PolynomialsCalculator {
    * @param radiansPhi latitude in radians.
    * @return initial linear array with two first elements.
    */
-  double[] initiatePnm(int degreeOrder, double radiansPhi) {
+  double[] initiatePnm(int degreeOrder, double u) {
     degreeOrder++;
     double p00 = 1.0d;
-    double p10 = Math.sqrt(3) * Math.cos(radiansPhi);
+    double p10 = Math.sqrt(3) * u;
     double[] pnm = new double[(degreeOrder * degreeOrder + degreeOrder) / 2];
     pnm[f(0,0)] = p00;
     pnm[f(1,0)] = p10;
     return pnm;
   }
 
-  void diagonalRecursion(double Pnm, int Nmax) {
+  void diagonalRecursion(double Pm_1m_1, int m, double u) {
 
   }
   /**
