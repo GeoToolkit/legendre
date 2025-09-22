@@ -12,7 +12,7 @@ public class PolynomialsCalculator {
    * Legendre Functions.
    * @param degree maximum degree of ALF.
    * @param phi latitude in radians of point that where ALF are supposed to be calculated.
-   * @return linear array of ALfs for poit with latitude phi.
+   * @return linear array of ALfs for point with latitude phi.
    */
   public double[] calculateFNALF(int degree, double phi) {
     double u = Math.cos(phi);
