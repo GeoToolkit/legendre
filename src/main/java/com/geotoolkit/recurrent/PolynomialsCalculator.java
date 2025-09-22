@@ -7,6 +7,13 @@ import java.util.concurrent.Executors;
 
 public class PolynomialsCalculator {
 
+  /**
+   * This is main method that should be used to calculate Associated
+   * Legendre Functions.
+   * @param degree maximum degree of ALF.
+   * @param phi latitude in radians of point that where ALF are supposed to be calculated.
+   * @return linear array of ALfs for poit with latitude phi.
+   */
   public double[] calculateFNALF(int degree, double phi) {
     double u = Math.cos(phi);
     double t = Math.sin(phi);
