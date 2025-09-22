@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 public class PolynomialsCalculator {
 
   /**
-   * This is main method that should be used to calculate Associated
+   * This is method that should be used to calculate Associated
    * Legendre Functions.
    * @param degree maximum degree of ALF.
    * @param phi latitude in radians of point that where ALF are supposed to be calculated.
